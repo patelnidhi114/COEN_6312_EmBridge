@@ -1,0 +1,662 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\setmarginsrb{2 cm}{2 cm}{2 cm}{2 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+\usepackage{multirow}
+% custom packages
+
+\usepackage[default]{lato}
+% \usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+
+\usepackage[toc,page]{appendix}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+
+\usepackage{pdfpages}
+\usepackage{makecell}
+\usepackage{color}
+\usepackage{listings}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstdefinestyle{R}{language=R,
+    basicstyle=\scriptsize\ttfamily,
+    frame=lines,
+    tabsize=2,
+    numberstyle=\tiny\color{mygray},
+    numbersep=2pt,
+    numbers=left,
+    captionpos=b,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    commentstyle=\color{pgreen},
+    keywordstyle=\color{pblue},
+    stringstyle=\color{pred},
+    basicstyle=\ttfamily,
+    % moredelim=[il][\textcolor{pgrey}]{$$},
+    % moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+}
+
+\lstdefinestyle{plain}{
+    basicstyle=\ttfamily,
+    frame=lines,
+    tabsize=2,
+    % numberstyle=\tiny\color{mygray},
+    % numbersep=2pt,
+    % numbers=left,
+    captionpos=b,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    % commentstyle=\color{pgreen},
+    % keywordstyle=\color{pblue},
+    % stringstyle=\color{pred},
+    % basicstyle=\ttfamily,
+    % moredelim=[il][\textcolor{pgrey}]{$$},
+    % moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    % unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    % pdftoolbar=true,        % show Acrobat’s toolbar?
+    % pdfmenubar=true,        % show Acrobat’s menu?
+    % pdffitwindow=false,     % window fit to page when opened
+    % pdfstartview={FitH},    % fits the width of the page to the window
+    % pdftitle={\title},    % title
+    % pdfauthor={\author},     % author
+    % pdfsubject={Subject},   % subject of the document
+    % pdfcreator={Creator},   % creator of the document
+    % pdfproducer={Producer}, % producer of the document
+    % pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\newcommand{\reqs}[2][gray]{\textit{\textcolor{#1}{Requirements: #2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{DELIVERABLE 3: Class Diagram
+		\\\vspace{.6cm}
+	}								% Title
+\author{
+	 40053363 - Ishaan Sharma\\
+	 40035779 - Kishor Tare\\
+	 40043592 - Nidhi Patel\\
+	 40048878 - Rashmi Narayan\\
+     40071278 - Yassine Jebbar \\
+     \newline\vspace{0.5 cm}
+     \textbf{Guided By:}\\\qquad Dr. Wahab Hamou-Lhadj
+	}								% Author
+\date{\today}											% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{COEN 6312}
+\lhead{Deliverable 3: Class Diagram}
+\cfoot{\thepage}
+
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    % \vspace*{0.5 cm}
+    \includegraphics[scale = 0.25]{logo_concordia.jpg}\\[1.0 cm]	% University Logo
+    \textsc{\LARGE Concordia University}\\[2.0 cm]	% University Name
+	\textsc{\Large COEN 6312}\\[0.5 cm]				% Course Code
+	\textsc{\large Model Driven Software Engineering}\\[0.5 cm]				% Course Name
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+
+	% \begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large\\[0.1 cm]
+			\textit{Team : EmBridge}\\[0.5 cm]
+		
+			\theauthor
+		\end{flushleft}
+	% \end{minipage}~
+	\vspace{2cm}
+	% \begin{minipage}{0.4\textwidth}
+	% 		\begin{flushright} \large
+	% 		\emph{Student Number:} \\
+	% 		XXXXXX000									% Your Student Number
+	% 	\end{flushright}
+	% \end{minipage}
+    
+	{\large February 15, 2019}\\[2 cm]
+
+	\vfill
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+\tableofcontents
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\begingroup
+\let\clearpage\relax
+\listoftables
+\endgroup
+\endgroup
+
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Introduction}
+
+This document depicts \textbf{Use case Diagram}, \textbf{Domain Description} of the domain and a list of \textbf{functional requirements} of the system named \textit{Embridge} in detail.
+
+\subsection*{Team Workflow}
+
+During this deliverable, the team often made regular meetings to discuss the tasks and align the doubts. The objective of each meeting is described in Table~\ref{tab:meeting}. : 
+
+\begin{table}[h]
+\centering
+\caption{Team meetings and milestones.}
+\label{tab:meeting}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Date & Discussion \\ \midrule
+Jan 25 & Review on Deliverable Description and Requirements; Upcoming Meetings Schedules. \\
+Jan 27 & Detailed discussion on Deliverable 2; Domain Description\\
+Feb 1 & Use case Model overview \\
+Feb 3 &  Prepared Functional requirement \\
+Feb 8 &  Final discussion and modifications on deliverable 2  \\
+Feb 15 & Submission of Deliverable 2 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\section{Class Diagram Description} \label{gqm}
+
+\reqs{
+Domain description will allow user to interact
+with system should be explained briefly. It should also consist of detail description of each activity a user will perform once he/she will interact with system.
+}
+
+
+Embridge is a common platform for employees within a company to discuss their progress or to make announcements. An employee can be either a regular employee or a manager, although they have the same permissions on the platform. In order to use the platform, the employee needs to register first. Every employee can log in to the platform once he is registered. After logging in, an employee can create a post (text, image, video), comment to a post or simply react to a post (like/dislike/comment). Moreover, an employee can send a private message to another employee, as well as create a group of employees conversation where the members of the group can talk to each other. In order to be included in the group conversation, an employee needs to be added to the group by a member of the group. An employee can also send a group request to be added to a group. Finally, an employee can also look for other employees within the platform.
+
+\section{Use Case Diagram}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.52]{USECASE.jpg}
+\caption{Use Case Diagram}\citep{bworld}\citep{ref2}
+\label{fig:Use Case Diagram}
+\end{figure}
+
+
+% UC1
+\begin{table}[h]
+\centering
+\caption{UC1: Create Account}
+\label{tab:uc1}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC1 \\ \midrule
+Name & Create Account \\
+Actors & Employee\\
+Description & An employee creates a user account on the Embridge platform \\
+Preconditions & 
+\begin{itemize}
+ \item username does not already exist,
+\item no username is associated with the email
+\end{itemize} \\
+Trigger &  Employee wants to use functionality of EmBridge\\
+Main Scenario & 
+\begin{enumerate}
+\item use case begins when an employee clicks on the register button
+\item A form containing full name, username, email, date of birth, security question, security answer shows up for the employee.
+ \item The employee fills the form with the required information and clicks on the OK button.
+\item Login page shows up for the employee.
+ \end{enumerate} \\
+Postconditions & A user account for the employee must be created on the database \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%UC2
+\begin{table}[h]
+\centering
+\caption{UC2: Login}
+\label{tab:uc2}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC2 \\ \midrule
+Name & Login \\
+Actors & Employee\\
+Description &
+Access to the platform and the content available within posted by other employees\\
+Preconditions & Employee must be already registered in Embridge\\
+Trigger & Employee wants to use Embridge platform.\\
+Main Scenario & 
+\begin{enumerate}
+\item Employee enters username and password
+\item Employee clicks on the login button
+\item The home page containing the latest posted content on the platform shows up
+\end{enumerate} \\
+Postconditions & The account must keep logged in indefinitely (as long as the employee doesn’t log out) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% UC3
+
+\begin{table}[h]
+\centering
+\caption{UC3: Reset Password}
+\label{tab:ucm1}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC3 \\ \midrule
+Name & Reset Password \\
+Actors & Employee\\
+Description &
+An employee can reset his account’s password in case the password is forgotten\\
+Preconditions & The employee must be registered in Embridge \\
+Trigger & Employee forgets or enters wrong password.\\
+Main Scenario & 
+\begin{enumerate}
+\item In the login page, the employee clicks on forgot password button
+\item The platform asks for the employee’s username
+\item The employee fills the field with his/her username and clicks ok.
+\item A page shows up containing the security question
+\item The employee answers the security question
+\item A page shows up asking the employee to enter a new password.
+\item The employee enters the new password and confirms it and clicks the OK button
+\item The login page shows up  
+\end{enumerate} \\
+Postconditions & The employee’s password must be updated in the database) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{UC4: Edit Profile}
+\label{tab:ucm1}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC4 \\ \midrule
+Name & Edit Profile \\
+Actors & Employee\\
+Description & An employee can make modifications on his account information\\
+Preconditions & The employee must be logged in \\
+Trigger & Employee wish to change his profile information.\\
+Main Scenario & 
+\begin{enumerate}
+\item clicks on Account tab
+\item A page showing the current employee’s information shows up
+\item the employee changes whatever information he wants to change and clicks on the OK button
+\item The home page feed for the employee’s account shows up
+
+\end{enumerate} \\
+Postconditions & Changed information must be updated in the database \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{UC5: Create Post}
+\label{tab:ucm1}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC5 \\ \midrule
+Name & Create Post \\
+Actors & Employee\\
+Description & An employee can post content on the platform. This includes posting text, image, video or any combination of those three. \\
+Preconditions & The employee must be logged in \\
+Trigger & Employee wants to share information/media with others.\\
+Main Scenario & 
+\begin{enumerate}
+\item The employee writes something on the post field
+\item If the employee wishes to join a video or image with the text, he clicks on the image/video icon below
+\item The image or video get uploaded in the post
+\item The employee clicks on the post button
+\item The post shows immediately on the employee’s timeline
+\end{enumerate} \\
+Postconditions & The employee’s number of posts must be incremented in the database.
+ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+%UC6
+\begin{table}[h]
+\centering
+\caption{UC6: React to Post}
+\label{tab:uc6}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+
+Number & UC6 \\ \midrule
+Name & React to Post \\
+Actors & Employee\\
+Description & Employee can react (like/dislike/comment) to his colleagues’ post.
+ \\
+Preconditions & The employee must be logged in. \\
+Trigger & Employee wants to react to his/her colleagues post\\
+Main Scenario & 
+\begin{enumerate}
+\item User views employees post from his feed stories.
+\item User can like/dislike and/or type his comment in comment field.
+\item User clicks on the like/dislike/add button.
+\item Post get updated on number of likes/dislikes/comments.
+\end{enumerate}
+ \\
+Postconditions & 
+\begin{itemize}
+\item Comment is added to the post.
+\item Like/Dislike count increases in the database.
+\end{itemize}
+ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%UC7
+\begin{table}[h]
+\centering
+\caption{UC7: Tag an Employee}
+\label{tab:uc7}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+
+Number & UC7 \\ \midrule
+Name & Tag an Employee \\
+Actors & Employee\\
+Description & An employee can tag/mention another employee in a post or comment.
+ \\
+Preconditions & 
+Employee must be logged in to the Embridge platform.
+ \\
+ 
+Trigger & Employee wants to mention his colleague in his/her post or comment.\\
+
+Main Scenario & 
+\begin{enumerate}
+\item User creates post in the post field/comments on the comment section of another post.
+\item User uses the ‘@’ character to tag another employee by name.
+\item User posts the content/comment.
+\end{enumerate}
+ \\
+Postconditions & The tagged employee is notified on the post/comment where he is mentioned. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%UC8
+\begin{table}[h]
+\centering
+\caption{UC8: Manage group}
+\label{tab:uc8}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+
+Number & UC8 \\ \midrule
+Name & Manage group \\
+Actors & Employee\\
+Description & An employee can create/delete group as well as add/remove people from a specific group.
+ \\
+Preconditions & 
+\begin{itemize}
+\item Employee must be logged in to the Embridge platform.
+\item An employee must be group admin to delete group
+\item An employee must be group admin to remove people from group 
+\end{itemize}
+ \\
+ Trigger & Employee wish to create a group.\\
+
+Main Scenario & 
+\begin{enumerate}
+\item User clicks on groups tab in the menu bar.
+\item User clicks on the “New group” button.
+\item User fills in the information in group name and description field.
+\item User can add other employees using search field.
+\item User clicks on create group button.
+\end{enumerate}
+ \\
+Postconditions & Group is created with group creator as an admin. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+%UC9
+\begin{table}[h]
+\centering
+\caption{UC9: Send Group Request}
+\label{tab:uc9}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+
+Number & UC9 \\ \midrule
+Name & Send Group Request \\
+Actors & Employee\\
+Description & Employee can send a request to join a group.
+ \\
+Preconditions & 
+Employee is not a member of that group.
+ \\
+ 
+Trigger & Employee wants be a member of an existing group.\\
+Main Scenario & 
+\begin{enumerate}
+\item User clicks on groups in the menu bar.
+\item User enters group name in Find group field and hit search button.
+\item User selects the group he wants to be member of.
+\item User clicks on send group request button.  
+\end{enumerate}
+ \\
+Postconditions & Group request is sent to the group admin. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%UC10
+\begin{table}[h]
+\centering
+\caption{UC10: Send Message}
+\label{tab:uc10}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+
+Number & UC10 \\ \midrule
+Name & Send Message \\
+Actors & Employee\\
+Description & Employees can send private messages to each other.
+ \\
+Preconditions & 
+Both employees are logged in.
+ \\
+ 
+Trigger & Employee wants to send a private message to his colleague.\\
+
+Main Scenario & 
+\begin{enumerate}
+\item User clicks on message button.
+\item User clicks on new message button.
+\item User selects an employee to send message to.
+\item User types message content.
+\item User clicks on send button. 
+\end{enumerate}
+ \\
+Postconditions & Message is delivered to the specified employee. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%UC11
+\begin{table}[ht]
+
+\caption{UC11: Search}
+\label{tab:uc11}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Number & UC11 \\ \midrule
+Name & Search \\
+Actors & Employee\\
+Description & An employee can search for other employees profile.
+ \\
+Preconditions & 
+Employee is logged in to the Embridge platform.
+ \\
+ 
+Trigger & Employee wants to search specific name(keyword).\\
+
+Main Scenario & 
+\begin{enumerate}
+\item User types in the name (keyword) in the search box.
+\item User clicks on the search button.
+\item User gets the results related to the search name (keyword).
+\end{enumerate} \\
+Postconditions & Employee can view other employees profile\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Functional Requirements}
+
+The functional requirements that Embridge should satisfy are as follows:
+
+\textbf{FC1:} The creation of an account for new users.
+
+\textbf{FC2:} The registered users should be able to reset their passwords.
+
+\textbf{FC3:} A registered user should have the possibility to edit his personal information within the platform.
+
+\textbf{FC4:} Any registered user should have the ability to post content on the platform. Content includes image, video or text or any combination of those three.
+
+\textbf{FC5:} A registered user should be able to mention/tag another user on a post or a comment (or both).
+
+\textbf{FC6:} A registered user should also have the possibility to react to a post in the platform. Reaction includes like/dislike a post or comment on a post.
+
+\textbf{FC7:} The platform should allow its registered users to manage groups. Group management can be the creation/deletion of a group as well as addition/removal of other users to/from a specific group.
+
+\textbf{FC8:} A registered user should also have the possibility to send a request to join a specific (existing) group.
+
+\textbf{FC9:} Any pair of users should have the ability to exchange private messages.
+
+\textbf{FC10:}  A registered user should have the possibility to search for another user in the platform.
+
+
+
+\begin{comment}
+
+\begin{center}
+\begin{longtable}{ |c|c|c|c|c|c| } 
+\caption{Functional Requirements}
+%\label{tab:FuncReq}
+\hline
+\thead{No.} & \thead{Requirement} & \thead{Description} & \thead{Input} & \thead{Processing} & \thead{Output} \\
+
+\hline
+\multirow{3}{1.5em}{FR1} & Register & \makecell{Create\\ account for\\ new users}  
+& \makecell{Full Name, user \\name,Date of\\ Birth,email id, \\Security question\\ and answer,\\Password} & \makecell{Store the\\provided\\ information \\in database \\and create\\ a new account} & \makecell {Display \\Login Page} \\
+\hline
+\multirow{3}{1.5em}{FR2} & Login & \makecell{Login into\\ an existing \\account}  
+& \makecell{Username,\\password} & \makecell{Matches the \\information with\\ database for \\authentication} & \makecell {Display \\Home Page} \\
+\hline
+\multirow{3}{1.5em}{FR3} & \makecell{Forgot \\Password} & \makecell{
+To enable\\ existing users\\ to login when\\ they forget\\ password}  
+& \makecell{Choose \\“Forgot Password” \\option in\\ Login page} & \makecell{Ask security\\ question and\\ match the answer\\ with information\\ in database} & \makecell {Display \\Login page\\ if answer\\ matches, else\\ display error.} \\
+\hline
+\multirow{3}{1.5em}{FR4} & \makecell{Edit \\Profile} & \makecell{
+Edit the \\details \\displayed\\in Profile page}  
+& \makecell{
+Select the \\fields to be\\ edited} & \makecell{Update the \\information in \\database} & \makecell {Display\\ updated\\ profile} \\
+\hline
+\multirow{3}{1.5em}{FR5} & \makecell{Post} & \makecell{
+Create a new\\ post which\\ includes text,\\ image or video.}  
+& \makecell{
+Select \\“make \\announcement” \\in the wall} & \makecell{Store the\\ information in \\database} & \makecell {Display \\created post} \\
+\hline
+\multirow{3}{1.5em}{FR6} & \makecell{Tag} & \makecell{
+Tag another\\ user in a\\ post or comment}  & \makecell{
+Use “@” \\to find other\\ users} & \makecell{Connect the\\ post to the\\ tagged \\user} & \makecell {Notify the\\ tagged user} \\
+\hline
+\multirow{3}{1.5em}{FR7} & \makecell{React} & \makecell{
+React to an\\ existing post\\ by like,\\ dislike or \\comment
+}  & \makecell{Select the \\reaction type\\ below a post\\ to react
+} & \makecell{ Store \\information of \\reaction in \\database} & \makecell {Display the \\reaction to\\ post} \\
+\hline
+\multirow{3}{1.5em}{FR8} & \makecell{Create\\ Group} & \makecell{
+Create a \\separate group\\ and add users}  & \makecell{Select \\“New Group”\\ under “Groups”} & \makecell{Store \\information of\\ group in\\ database} & \makecell {Notify \\the users \\added to \\group} \\
+\hline
+\multirow{3}{1.5em}{FR9} & \makecell{Group \\Request} & \makecell{
+Send request\\ to be added\\ to an \\existing group}  & \makecell{Find the\\ required group \\and send\\ request} & \makecell{Update the\\ information of\\ group in database \\if the request\\ is accepted by\\ admin} & \makecell {Send \\request\\ and notify\\ the admin of \\the request.\\ He can\\ Accept or \\Decline.} \\
+\hline
+\multirow{3}{1.9em}{FR10} & \makecell{Message} & \makecell{
+Send a \\message to\\ another user}  & \makecell{Select \\“Messages” \\from Home\\ page and \\enter \\“destination\\ \textunderscore{username}” \\and “your\textunderscore{message}”} & \makecell{Store \\information \\in database} & \makecell {Send \\message and\\ notify the\\ destination\\ user.} \\
+\hline
+\multirow{3}{1.9em}{FR11} & \makecell{Search} & \makecell{
+Find \\a user}  & \makecell{Select \\“search” in\\ Home page} & \makecell{Retrieve \\information\\ from \\database} & \makecell {Display\\ search \\results} \\
+\hline
+\end{longtable}
+\end{center}
+\newpage
+
+\end{comment}
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+[3] [Ebook]. Retrieved from \hspace{0.1cm} \url{http://csis.pace.edu/~marchese/CS389/L9/Use%20Case%20Diagrams.pdf }
+\vspace{0.5cm}\newline
+[4] [Ebook]. Retrieved from \hspace{0.1cm}\url{http://www.bredemeyer.com/pdf_files/functreq.pdf}
+
+
+
+\end{document}
